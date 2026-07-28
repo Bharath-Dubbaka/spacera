@@ -1,5 +1,42 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {
+  Fraunces,
+  Inter,
+  IBM_Plex_Mono,
+  Geist,
+  Geist_Mono,
+} from "next/font/google";
+import AppShell from "@/components/AppShell";
+import "lenis/dist/lenis.css";
+import localFont from "next/font/local";
+
+// Point directly to where you already dropped them
+const neueWorld = localFont({
+  src: "../public/fonts/PPNeueWorld-Regular.ttf",
+  variable: "--font-neue-world",
+});
+
+const neueMontreal = localFont({
+  src: "../public/fonts/PPNeueMontreal-Regular.ttf",
+  variable: "--font-neue-montreal",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,9 +57,11 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} ${neueWorld.variable} ${neueMontreal.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="bg-[#E6D8C7] text-paper font-body antialiased">
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }
