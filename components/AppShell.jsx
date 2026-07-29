@@ -31,7 +31,7 @@ export default function AppShell({ children }) {
   return (
     <>
       <SmoothScrollProvider>
-        {showLoader && <IntroLoader onComplete={handleLoaderComplete} />}
+        {/* {showLoader && <IntroLoader onComplete={handleLoaderComplete} />} */}
         <Header />
         <PageTransition>{children}</PageTransition>
         <Footer />

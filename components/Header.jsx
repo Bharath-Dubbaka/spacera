@@ -8,9 +8,9 @@ import Image from "next/image";
 
 const LINKS = [
    { title: "Home", href: "/", src: "gallery/01.jpg" },
-   { title: "Shop", href: "/contact", src: "gallery/02.png" },
+   { title: "Gallery", href: "/contact", src: "gallery/02.png" },
    { title: "About Us", href: "/about", src: "gallery/03.png" },
-   { title: "Lookbook", href: "/", src: "gallery/04.png" },
+   // { title: "Lookbook", href: "/", src: "gallery/04.png" },
    { title: "Contact", href: "/contact", src: "gallery/01.jpg" },
 ];
 
@@ -43,7 +43,7 @@ export default function Header() {
       isActive: false,
       index: 0,
    });
-
+   const [isModalOpen, setIsModalOpen] = useState(false);
    // Handle scroll tracking
    useEffect(() => {
       const onScroll = () => setScrolled(window.scrollY > 20);
@@ -66,7 +66,10 @@ export default function Header() {
       >
          {/* Top Bar Layout */}
          <div className="relative flex justify-center items-center text-[12px] font-normal text-gray-850 tracking-wider h-12 uppercase">
-            <Link href="/" className="absolute text-md md:text-xl left-0 flex items-center text-white gap-2 font-[family-name:var(--font-display)]">
+            <Link
+               href="/"
+               className="absolute text-md md:text-xl left-0 flex items-center text-black gap-2 font-[family-name:var(--font-display)]"
+            >
                <Image
                   src="/gallery/logo.png"
                   alt="Logo"
@@ -109,6 +112,15 @@ export default function Header() {
                   </motion.p>
                </div>
             </div>
+            {/* NEW CODE */}
+            <div className="absolute right-6 flex items-center h-full">
+               <Link
+                  href="/contact"
+                  className="px-5 py-2.5 bg-[#C39F73] text-black text-xs uppercase tracking-wider font-bold rounded-lg hover:bg-white transition-all"
+               >
+                  Get Quote
+               </Link>
+            </div>
          </div>
 
          {/* Dropdown Menu Container */}
@@ -132,7 +144,7 @@ export default function Header() {
                               <Link
                                  key={index}
                                  href={link.href}
-                                 className="no-underline text-neutral-900 uppercase"
+                                 className="no-underline text-neutral-900 uppercase hover:text-white"
                               >
                                  <motion.p
                                     onMouseOver={(e) => {
@@ -167,9 +179,7 @@ export default function Header() {
                         {/* Metadata Row */}
                         <div className="grid grid-cols-2 min-[1000px]:flex min-[1000px]:justify-between items-end gap-4 text-[10px] uppercase text-white tracking-wider pt-12 border-t border-neutral-900/40">
                            <div>
-                              <span className=" mr-1">
-                                 Made by:
-                              </span>
+                              <span className=" mr-1">Made by:</span>
                               spacera
                            </div>
                            <div>
@@ -179,9 +189,7 @@ export default function Header() {
                               Designer Studio
                            </div>
                            <div>
-                              <span className=" mr-1">
-                                 Privacy
-                              </span>
+                              <span className=" mr-1">Privacy</span>
                               Policy
                            </div>
                            <div
