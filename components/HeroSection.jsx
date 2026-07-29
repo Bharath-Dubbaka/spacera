@@ -2,32 +2,39 @@
 
 import { ArrowUpRight } from "lucide-react";
 
-const QUICK_LINKS = ["Custom Work", "Fine Line", "Cover-Ups", "Book Now"];
+const QUICK_LINKS = ["Residential", "Commercial", "Renovations", "Get a Quote"];
 
-export default function Hero() {
+export default function MiniHero() {
    return (
       <section className="relative w-full bg-[#E6D8C7] pt-28 pb-16 px-6 md:px-12 md:pt-36">
-         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-12 md:gap-6">
+         <div className="mb-4 text-center">
+            <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#BC4424]">
+               This Is What We Define
+            </span>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl uppercase tracking-wide text-[#3A3A3A] sm:text-5xl">
+               Why Us
+            </h2>
+         </div>
+         <div className="grid max-w-full grid-cols-1 gap-6 md:grid-cols-12 md:gap-6 p-2 md:p-20">
             {/* Left: large portrait image with overlaid title + quick links */}
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#3A3A3A] md:col-span-7 md:aspect-auto">
                <img
-                  src="/gallery/01.jpg"
+                  src="/gallery/05.png"
                   alt="Tattoo artistry in progress"
                   className="absolute inset-0 h-full w-full object-cover"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/20" />
+               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/10 to-black/20" />
 
                <div className="relative z-10 flex h-full min-h-[480px] flex-col justify-between p-8 md:min-h-[600px] md:p-10">
                   <div>
-                     <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#E6D8C7]/80">
-                        Est. 2012 — Tattoo Studio
-                     </span>
-                     <h1 className="mt-4 font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.95] text-[#E6D8C7] sm:text-6xl md:text-7xl">
-                        Ink That
+                     {/* <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#E6D8C7]/80 ">
+                        Est. 2018 — SPACERA
+                     </span> */}
+                     <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] text-[#E6D8C7] sm:text-6xl md:text-7xl">
+                        Designing <br />
+                        Spaces That
                         <br />
-                        Tells Your
-                        <br />
-                        Story
+                        Inspire
                      </h1>
                   </div>
 
@@ -45,18 +52,18 @@ export default function Hero() {
             </div>
 
             {/* Right: two stacked feature cards */}
-            <div className="flex flex-col gap-6 md:col-span-5">
+            <div className="flex flex-col gap-6 md:col-span-5 ">
                <FeatureCard
                   image="/gallery/02.png"
-                  label="Tattoo Art"
-                  caption="From bold blackwork to delicate fine line, every piece is designed around your story before the needle touches skin."
-                  cta="Explore The Work"
+                  label="Interior Design"
+                  caption="Thoughtfully crafted interiors that balance aesthetics, functionality, and timeless elegance for every lifestyle."
+                  cta="View Projects"
                />
                <FeatureCard
                   image="/gallery/03.png"
-                  label="Consultations"
-                  caption="Free design consultations, in-studio or virtual, before every session — no piece starts without one."
-                  cta="Book A Session"
+                  label="Consultation"
+                  caption="From concept to completion, our design experts guide you through every step to create spaces tailored to your vision."
+                  cta="Book Consultation"
                />
             </div>
          </div>
@@ -78,7 +85,7 @@ function FeatureCard({ image, label, caption, cta }) {
                {label}
             </span>
          </div>
-         <div className="flex flex-1 flex-col justify-between gap-4 bg-[#C39F73]/15 p-5">
+         <div className="flex flex-1 flex-col justify-between gap-4 bg-neutral-100/[0.01] backdrop-blur-sm p-5">
             <p className="text-xs leading-relaxed text-[#3A3A3A]/80 sm:text-sm">
                {caption}
             </p>

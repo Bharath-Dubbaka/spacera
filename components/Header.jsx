@@ -60,13 +60,13 @@ export default function Header() {
          onMouseLeave={() => setIsHovered(false)}
          className={`fixed top-0 left-0 z-50 w-full px-6 py-4 box-border border-b transition-all duration-500 ease-in-out ${
             shouldApplyBlur
-               ? "backdrop-blur-xl border-neutral-50/10"
-               : "bg-transparent border-transparent"
+               ? "backdrop-blur-2xl border-neutral-50/10"
+               : "bg-[#E6D8C7] border-transparent"
          }`}
       >
          {/* Top Bar Layout */}
-         <div className="relative flex justify-center items-center text-[12px] font-normal text-gray-850 tracking-wider h-6 uppercase">
-            <Link href="/" className="absolute left-0 flex items-center">
+         <div className="relative flex justify-center items-center text-[12px] font-normal text-gray-850 tracking-wider h-12 uppercase">
+            <Link href="/" className="absolute text-md md:text-xl left-0 flex items-center text-white gap-2 font-[family-name:var(--font-display)]">
                <Image
                   src="/gallery/logo.png"
                   alt="Logo"
@@ -74,7 +74,8 @@ export default function Header() {
                   height={190}
                   priority
                   className="h-8 w-auto bg-transparent"
-               />
+               />{" "}
+               SPACERA
             </Link>
 
             {/* Center Toggle Button */}
@@ -93,14 +94,14 @@ export default function Header() {
 
                <div className="relative w-12 h-4 ">
                   <motion.p
-                     className="absolute m-0 text-[#BC4424]"
+                     className="absolute m-0 text-white"
                      variants={opacityAnim}
                      animate={!isActive ? "open" : "closed"}
                   >
                      Menu
                   </motion.p>
                   <motion.p
-                     className="absolute m-0 text-[#BC4424]"
+                     className="absolute m-0 text-black font-bold"
                      variants={opacityAnim}
                      animate={isActive ? "open" : "closed"}
                   >
@@ -164,21 +165,21 @@ export default function Header() {
                         </div>
 
                         {/* Metadata Row */}
-                        <div className="grid grid-cols-2 min-[1000px]:flex min-[1000px]:justify-between items-end gap-4 text-[10px] uppercase text-[#BC4424] tracking-wider pt-12 border-t border-neutral-900/40">
+                        <div className="grid grid-cols-2 min-[1000px]:flex min-[1000px]:justify-between items-end gap-4 text-[10px] uppercase text-white tracking-wider pt-12 border-t border-neutral-900/40">
                            <div>
-                              <span className="text-[#BC4424] mr-1">
+                              <span className=" mr-1">
                                  Made by:
                               </span>
                               spacera
                            </div>
                            <div>
-                              <span className="text-[#BC4424] mr-1">
+                              {/* <span className="mr-1">
                                  Typography:
-                              </span>
-                              Google Fonts
+                              </span> */}
+                              Designer Studio
                            </div>
                            <div>
-                              <span className="text-[#BC4424] mr-1">
+                              <span className=" mr-1">
                                  Privacy
                               </span>
                               Policy
