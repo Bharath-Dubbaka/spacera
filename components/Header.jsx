@@ -177,12 +177,12 @@ export default function Header() {
                         </div>
 
                         {/* Metadata Row */}
-                        <div className="grid grid-cols-2 min-[1000px]:flex min-[1000px]:justify-between items-end gap-4 text-[10px] uppercase text-white tracking-wider pt-12 border-t border-neutral-900/40">
+                        <div className="grid grid-cols-2 min-[1000px]:flex min-[1000px]:justify-between items-end gap-2 text-[10px] uppercase text-amber-800 tracking-wider pt-12 border-t border-neutral-900/40">
                            <div>
                               <span className=" mr-1">Made by:</span>
                               spacera
                            </div>
-                           <div>
+                           <div className="sm:text-end ">
                               {/* <span className="mr-1">
                                  Typography:
                               </span> */}
@@ -193,14 +193,14 @@ export default function Header() {
                               Policy
                            </div>
                            <div
-                              className="flex flex-col gap-1"
+                              className="flex flex-col gap-1 sm:text-end"
                               onClick={() => setIsActive(false)}
                            >
                               {/* <Link href="/privacy" className="hover:underline">
                       Privacy Policy
                     </Link> */}
                               <Link href="/terms" className="hover:underline">
-                                 Terms & Conditions
+                                 Terms of Service
                               </Link>
                            </div>
                         </div>

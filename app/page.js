@@ -4,6 +4,8 @@ import ServiceSection from "@/components/ServiceSection";
 import Hero from "@/components/HeroSection";
 import Image from "next/image";
 import { ImagesSliderDemo } from "@/components/imgSlider/ImagesSliderDemo";
+import ServicesCarousel from "@/components/ServicesCarousel";
+import ServicesScrollDriven from "@/components/ServicesScrollDriven";
 
 export default function Home() {
    return (
@@ -11,6 +13,8 @@ export default function Home() {
          <ImagesSliderDemo />
          <HeroSection />
          {/* <AboutSection /> */}
+         <ServicesCarousel />
+         <ServicesScrollDriven />
          <ServiceSection />
       </main>
    );
