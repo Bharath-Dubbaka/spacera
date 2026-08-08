@@ -104,7 +104,7 @@ export default function ServicesScrollDriven() {
    );
 
    const heading = (
-      <div className="mb-2 lg:mb-8 px-6 text-center md:px-12 mt-10">
+      <div className="mb-2 lg:mb-16 px-6 text-center md:px-12 mt-10">
          <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#BC4424]">
             This Is What We Do
          </span>

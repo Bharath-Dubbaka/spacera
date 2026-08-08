@@ -7,6 +7,7 @@ import { ImagesSliderDemo } from "@/components/imgSlider/ImagesSliderDemo";
 import ServicesCarousel from "@/components/ServicesCarousel";
 import ServicesScrollDriven from "@/components/ServicesScrollDriven";
 import EndToEndSolutions from "@/components/EndToEndSolutions";
+import EssentialPackage from "@/components/EssentialPackage";
 
 export default function Home() {
    return (
@@ -14,12 +15,12 @@ export default function Home() {
          <ImagesSliderDemo />
          <HeroSection />
          {/* <AboutSection /> */}
-         <ServicesCarousel />
+         {/* <ServicesCarousel /> */}
          <ServicesScrollDriven />
          {/*         <ServiceSection /> */}
          {/* <HeroSection /> */}
          <EndToEndSolutions/>
-         <HeroSection />
+         <EssentialPackage />
       </main>
    );
 }

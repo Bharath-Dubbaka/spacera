@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 // import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 const LINKS = [
    { title: "Home", href: "/", src: "gallery/bedrooms/01.jpg" },
@@ -36,6 +36,8 @@ const opacityAnim = {
 };
 
 export default function Header() {
+   const headerRef = useRef(null);
+
    const [isActive, setIsActive] = useState(false);
    const [scrolled, setScrolled] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
@@ -46,21 +48,40 @@ export default function Header() {
    const [isModalOpen, setIsModalOpen] = useState(false);
    // Handle scroll tracking
    useEffect(() => {
-      const onScroll = () => setScrolled(window.scrollY > 20);
+      const onScroll = () => {
+         setScrolled(window.scrollY > 20);
+      };
+
+      const handleOutsideClick = (event) => {
+         if (
+            isActive &&
+            headerRef.current &&
+            !headerRef.current.contains(event.target)
+         ) {
+            setIsActive(false);
+         }
+      };
+
       window.addEventListener("scroll", onScroll, { passive: true });
-      return () => window.removeEventListener("scroll", onScroll);
-   }, []);
+      document.addEventListener("mousedown", handleOutsideClick);
+
+      return () => {
+         window.removeEventListener("scroll", onScroll);
+         document.removeEventListener("mousedown", handleOutsideClick);
+      };
+   }, [isActive]);
 
    // Condition to turn header background from transparent to blur/color
    const shouldApplyBlur = scrolled || isHovered || isActive;
 
    return (
       <div
+         ref={headerRef}
          onMouseEnter={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}
          className={`fixed top-0 left-0 z-50 w-full px-6 py-4 box-border border-b transition-all duration-500 ease-in-out ${
             shouldApplyBlur
-               ? "backdrop-blur-2xl border-neutral-50/10"
+               ? "bg-[#E6D8C7]/90 backdrop-blur-sm border-black/10"
                : "bg-[#E6D8C7] border-transparent"
          }`}
       >
@@ -83,7 +104,7 @@ export default function Header() {
 
             {/* Center Toggle Button */}
             <div
-               onClick={() => setIsActive(!isActive)}
+               onClick={() => setIsActive((prev) => !prev)}
                className="flex items-center gap-2 cursor-pointer select-none py-1 h-full relative"
             >
                <div className="w-4 h-4 relative flex items-center justify-center mr-1">
@@ -97,7 +118,7 @@ export default function Header() {
 
                <div className="relative w-12 h-4 ">
                   <motion.p
-                     className="absolute m-0 text-white"
+                     className="absolute m-0 text-black font-bold"
                      variants={opacityAnim}
                      animate={!isActive ? "open" : "closed"}
                   >
@@ -118,7 +139,7 @@ export default function Header() {
                   href="/contact"
                   className="px-5 py-2.5 bg-[#C39F73] text-black text-xs uppercase tracking-wider font-bold rounded-lg hover:bg-white transition-all"
                >
-                  Get Quote
+                  Get Free Estimation
                </Link>
             </div>
          </div>
@@ -144,7 +165,7 @@ export default function Header() {
                               <Link
                                  key={index}
                                  href={link.href}
-                                 className="no-underline text-neutral-900 uppercase hover:text-white"
+                                 className="no-underline text-neutral-900 uppercase hover:text-[#8B6B48]"
                               >
                                  <motion.p
                                     onMouseOver={(e) => {

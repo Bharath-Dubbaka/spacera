@@ -84,11 +84,21 @@ const SOLUTIONS = [
 export default function EndToEndSolutions() {
    return (
       <section className="w-full bg-[#E6D8C7] px-5 py-12 sm:px-8 md:py-16 pt-10">
-         <div className="mx-auto max-w-5xl">
+         <div className="mx-auto max-w-5xl text-center">
+            {/* <section className="relative w-full bg-[#E6D8C7] pt-28 pb-16 px-6 md:px-12 md:pt-36"> */}
+
             {/* Heading */}
-            <h2 className="mb-10 text-center font-[family-name:var(--font-display)] text-[22px] font-normal tracking-tight text-[#2f2f2f] sm:text-2xl">
+            {/* <h2 className="my-3 mb-20 underline font-[family-name:var(--font-display)] text-4xl uppercase tracking-wide text-[#3A3A3A] sm:text-5xl">
                End-to-End Interior Solutions
-            </h2>
+            </h2> */}
+            <div className="my-20 md:my-32 text-center">
+               <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#BC4424]">
+                  Specialized in Every Aspect of Interior Design
+               </span>
+               <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl uppercase tracking-wide text-[#3A3A3A] sm:text-5xl">
+                  End-to-End Interior Solutions
+               </h2>
+            </div>
 
             {/* Solutions Grid */}
             <div className="grid grid-cols-2 gap-y-9 sm:grid-cols-3 sm:gap-y-10 md:grid-cols-5 md:gap-y-11">
@@ -101,10 +111,10 @@ export default function EndToEndSolutions() {
                         className="group flex cursor-pointer flex-col items-center text-center"
                      >
                         {/* Icon */}
-                        <div className="flex h-[52px] w-[70px] items-center justify-center">
+                        <div className="flex h-full w-full items-center justify-center">
                            <Icon
                               strokeWidth={1.25}
-                              className="h-11 w-11 text-[#5b5b5b] transition-all duration-300 group-hover:scale-105 group-hover:text-[#BC4424]"
+                              className="h-28 w-28 text-[#BC4424] transition-all duration-300 group-hover:scale-115 group-hover:text-[#5b5b5b]"
                            />
                         </div>
 

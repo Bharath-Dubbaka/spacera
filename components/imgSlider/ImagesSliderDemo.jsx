@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export function ImagesSliderDemo() {
    const images = [
-      "/gallery/optimized/06.png",
-      "/gallery/optimized/03.png",
-      "/gallery/optimized/04.png",
+      "/gallery/optimized/04.jpg",
+      "/gallery/optimized/02.jpg",
+      "/gallery/optimized/pooja.jpg",
    ];
    return (
       <ImagesSlider
@@ -93,9 +93,12 @@ export function ImagesSliderDemo() {
                functionality, comfort, and timeless aesthetics.
             </p>
 
-            <button className="mt-10 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm uppercase tracking-[0.2em] text-white backdrop-blur-md transition hover:bg-white hover:text-black">
+            <Link
+               href="/projects"
+               className="mt-10 inline-block rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm uppercase tracking-[0.2em] text-white backdrop-blur-md transition hover:bg-white hover:text-black"
+            >
                View Projects
-            </button>
+            </Link>
          </motion.div>
       </ImagesSlider>
    );

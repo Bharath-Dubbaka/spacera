@@ -20,7 +20,7 @@ export default function MiniHero() {
             {/* Left: large portrait image with overlaid title + quick links */}
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#3A3A3A] md:col-span-7 md:aspect-auto">
                <Image
-                  src="/gallery/bedrooms/optimized/05.png"
+                  src="/gallery/bedrooms/05.png"
                   alt="Artistry in progress"
                   fill
                   className="object-cover"
