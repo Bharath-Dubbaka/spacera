@@ -139,7 +139,7 @@ export default function ServicesScrollDriven() {
       <section
          ref={wrapperRef}
          style={{ height: wrapperHeight ? `${wrapperHeight}px` : "200vh" }}
-         className="relative w-full border-b border-black/[0.05] bg-[#E6D8C7] md:max-w-[80%] mx-auto"
+         className="relative w-full border-b border-black/[0.05] bg-[#E6D8C7] md:max-w-[80%] mx-auto pb-20"
       >
          <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden pt-[3rem] md:pt-10 py-10">
             {heading}

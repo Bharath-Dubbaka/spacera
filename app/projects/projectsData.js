@@ -36,19 +36,19 @@ export const PROJECT_SECTIONS = [
       projects: [
          {
             title: "Modern Living",
-            image: "/gallery/living-1.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Luxury Lounge",
-            image: "/gallery/living-2.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Minimal Scandinavian",
-            image: "/gallery/living-3.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Contemporary Family Room",
-            image: "/gallery/living-4.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
       ],
    },
@@ -89,19 +89,19 @@ export const PROJECT_SECTIONS = [
       projects: [
          {
             title: "Office Reception",
-            image: "/gallery/commercial-1.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Board Room",
-            image: "/gallery/commercial-2.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Open Workspace",
-            image: "/gallery/commercial-3.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
          {
             title: "Studio Interior",
-            image: "/gallery/commercial-4.jpg",
+            image: "/gallery/kitchen/kitchen-4.jpg",
          },
       ],
    },

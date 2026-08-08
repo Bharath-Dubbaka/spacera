@@ -35,20 +35,26 @@ export const ImagesSlider = ({
    const loadImages = () => {
       setLoading(true);
       const loadPromises = images.map((image) => {
-         return new Promise((resolve, reject) => {
-            const img = new Image();
+         return new Promise((resolve) => {
+            const img = new window.Image();
             img.src = image;
             img.onload = () => resolve(image);
-            img.onerror = reject;
+            // Resolve with null instead of rejecting — one broken image
+            // path shouldn't hang the whole slider in a loading state.
+            img.onerror = () => resolve(null);
          });
       });
 
-      Promise.all(loadPromises)
-         .then((loadedImages) => {
-            setLoadedImages(loadedImages);
-            setLoading(false);
-         })
-         .catch((error) => console.error("Failed to load images", error));
+      Promise.all(loadPromises).then((results) => {
+         const successful = results.filter(Boolean);
+         if (successful.length < images.length) {
+            console.warn(
+               `ImagesSlider: ${images.length - successful.length} of ${images.length} images failed to load.`,
+            );
+         }
+         setLoadedImages(successful);
+         setLoading(false);
+      });
    };
    useEffect(() => {
       const handleKeyDown = (event) => {
@@ -61,7 +67,6 @@ export const ImagesSlider = ({
 
       window.addEventListener("keydown", handleKeyDown);
 
-      // autoplay
       let interval;
       if (autoplay) {
          interval = setInterval(() => {
@@ -76,34 +81,15 @@ export const ImagesSlider = ({
    }, []);
 
    const slideVariants = {
-      initial: {
-         scale: 0,
-         opacity: 0,
-         rotateX: 45,
-      },
+      initial: { scale: 0, opacity: 0, rotateX: 45 },
       visible: {
          scale: 1,
          rotateX: 0,
          opacity: 1,
-         transition: {
-            duration: 0.5,
-            ease: [0.645, 0.045, 0.355, 1.0],
-         },
+         transition: { duration: 0.5, ease: [0.645, 0.045, 0.355, 1.0] },
       },
-      upExit: {
-         opacity: 1,
-         y: "-150%",
-         transition: {
-            duration: 1,
-         },
-      },
-      downExit: {
-         opacity: 1,
-         y: "150%",
-         transition: {
-            duration: 1,
-         },
-      },
+      upExit: { opacity: 1, y: "-150%", transition: { duration: 1 } },
+      downExit: { opacity: 1, y: "150%", transition: { duration: 1 } },
    };
 
    const areImagesLoaded = loadedImages.length > 0;
@@ -114,15 +100,13 @@ export const ImagesSlider = ({
             "overflow-hidden h-full w-full relative flex items-center justify-center",
             className,
          )}
-         style={{
-            perspective: "1000px",
-         }}
+         style={{ perspective: "1000px" }}
       >
          {areImagesLoaded && children}
          {areImagesLoaded && overlay && (
             <div
                className={cn(
-                  "absolute inset-0 bg-black/40 z-40 bg-gradient-to-br from-black/80 via-black/40 to-transparent",
+                  "absolute inset-0 bg-black/40 z-40",
                   overlayClassName,
                )}
             />

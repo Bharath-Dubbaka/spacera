@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export function ImagesSliderDemo() {
    const images = [
-      "/gallery/06.png",
-      "/gallery/bedrooms/03.png",
-      "/gallery/04.png",
+      "/gallery/optimized/06.png",
+      "/gallery/optimized/03.png",
+      "/gallery/optimized/04.png",
    ];
    return (
       <ImagesSlider
