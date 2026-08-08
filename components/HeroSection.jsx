@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const QUICK_LINKS = ["Residential", "Commercial", "Renovations", "Get a Quote"];
 
@@ -15,22 +16,24 @@ export default function MiniHero() {
                Why Us
             </h2>
          </div>
-         <div className="grid max-w-full grid-cols-1 gap-6 md:grid-cols-12 md:gap-6 p-2 md:p-20">
+         <div className="grid max-w-full grid-cols-1 gap-6 md:grid-cols-12 md:gap-6 p-2 lg:p-20">
             {/* Left: large portrait image with overlaid title + quick links */}
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#3A3A3A] md:col-span-7 md:aspect-auto">
-               <img
+               <Image
                   src="/gallery/05.png"
-                  alt="Tattoo artistry in progress"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  alt="Artistry in progress"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 90vw, 380px"
                />
                <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/10 to-black/20" />
 
-               <div className="relative z-10 flex h-full min-h-[480px] flex-col justify-between p-8 md:min-h-[600px] md:p-10">
+               <div className="relative z-10 flex h-full md:min-h-[480px] flex-col justify-between p-2 md:min-h-[600px] md:p-4 lg:p-10">
                   <div>
                      {/* <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#E6D8C7]/80 ">
                         Est. 2018 — SPACERA
                      </span> */}
-                     <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] text-[#E6D8C7] sm:text-6xl md:text-7xl">
+                     <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] text-[#E6D8C7] sm:text-5xl md:text-6xl">
                         Designing <br />
                         Spaces That
                         <br />
@@ -42,7 +45,7 @@ export default function MiniHero() {
                      {QUICK_LINKS.map((item) => (
                         <li
                            key={item}
-                           className="w-fit cursor-pointer font-[family-name:var(--font-neue-montreal)] text-xs uppercase tracking-[0.15em] text-[#E6D8C7]/70 transition-colors hover:text-[#BC4424]"
+                           className="w-fit cursor-pointer font-[family-name:var(--font-neue-montreal)] text-xs uppercase tracking-[0.15em] text-white transition-colors hover:text-[#BC4424]"
                         >
                            {item}
                         </li>
@@ -60,7 +63,7 @@ export default function MiniHero() {
                   cta="View Projects"
                />
                <FeatureCard
-                  image="/gallery/03.png"
+                  image="/gallery/bedrooms/03.png"
                   label="Consultation"
                   caption="From concept to completion, our design experts guide you through every step to create spaces tailored to your vision."
                   cta="Book Consultation"
@@ -75,10 +78,12 @@ function FeatureCard({ image, label, caption, cta }) {
    return (
       <div className="group relative flex flex-1 flex-col overflow-hidden rounded-lg border border-black/[0.06] bg-[#3A3A3A]/5">
          <div className="relative aspect-[4/3] w-full overflow-hidden">
-            <img
+            <Image
                src={image}
                alt={label}
+               fill
                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+               sizes="(max-width: 768px) 90vw, 380px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             <span className="absolute right-4 top-4 rotate-180 font-[family-name:var(--font-display)] text-xs uppercase tracking-[0.25em] text-[#E6D8C7] [writing-mode:vertical-rl]">

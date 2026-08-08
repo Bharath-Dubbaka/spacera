@@ -15,7 +15,9 @@ export default function Home() {
          {/* <AboutSection /> */}
          <ServicesCarousel />
          <ServicesScrollDriven />
-         <ServiceSection />
+         {/*         <ServiceSection /> */}
+         <HeroSection />
+         <HeroSection />
       </main>
    );
 }

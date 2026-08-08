@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SERVICES } from "@/lib/servicesData";
+import Image from "next/image";
 
 export default function ServicesScrollDriven() {
    const wrapperRef = useRef(null);
@@ -30,8 +31,12 @@ export default function ServicesScrollDriven() {
       const calcHeight = () => {
          const track = trackRef.current;
          if (!track) return;
+
          const extraScroll = Math.max(track.scrollWidth - window.innerWidth, 0);
-         setWrapperHeight(window.innerHeight + extraScroll);
+
+         const scrollSpeed = 1.5;
+
+         setWrapperHeight(window.innerHeight + extraScroll * scrollSpeed);
       };
       calcHeight();
       window.addEventListener("resize", calcHeight);
@@ -71,23 +76,25 @@ export default function ServicesScrollDriven() {
          {SERVICES.map((s) => (
             <Link
                key={s.slug}
-               href={`/services/${s.slug}`}
-               className="group flex w-[80vw] shrink-0 flex-col text-left sm:w-[380px]"
+               href={`/projects`}
+               className="group flex w-[90vw] shrink-0 flex-col text-left sm:w-[380px]"
             >
-               <div className="relative aspect-[4/5] lg:aspect-[3/4] w-full overflow-hidden rounded-b-2xl rounded-t-[999px] border border-black/10 bg-[#3A3A3A]">
-                  <img
+               <div className="relative aspect-[4/3.8] md:aspect-[3/4] w-full overflow-hidden rounded-b-2xl rounded-t-[999px] border border-black/10 bg-[#3A3A3A]">
+                  <Image
                      src={s.image}
                      alt={s.title}
                      className="h-full w-full object-cover grayscale-[15%] transition-transform duration-500 group-hover:scale-105"
+                     fill
+                     sizes="(max-width: 768px) 90vw, 380px"
                   />
                </div>
-               <h3 className="mt-6 font-[family-name:var(--font-display)] text-xl uppercase tracking-wide text-[#3A3A3A]">
+               <h3 className="mt-2 md:mt-4 lg:mt-6 font-[family-name:var(--font-display)] text-lg sm:text-xl uppercase tracking-wide text-[#3A3A3A]">
                   {s.title}
                </h3>
-               <p className="mt-3 text-sm leading-relaxed text-[#3A3A3A]/70">
+               <p className="md:mt-1 lg:mt-3 text-xs sm:text-sm leading-relaxed text-[#3A3A3A]/70">
                   {s.description}
                </p>
-               <span className="mt-4 inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all group-hover:gap-2">
+               <span className="md:mt-1 lg:mt-4 inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all group-hover:gap-2">
                   Read More
                   <ArrowUpRight className="h-3.5 w-3.5" />
                </span>
@@ -97,11 +104,11 @@ export default function ServicesScrollDriven() {
    );
 
    const heading = (
-      <div className="mb-10 px-6 text-center md:px-12 mt-10">
+      <div className="mb-2 lg:mb-8 px-6 text-center md:px-12 mt-10">
          <span className="font-[family-name:var(--font-neue-montreal)] text-[11px] uppercase tracking-[0.3em] text-[#BC4424]">
             This Is What We Do
          </span>
-         <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl uppercase tracking-wide text-[#3A3A3A] sm:text-5xl">
+         <h2 className="mt-3 font-[family-name:var(--font-display)] text-[2rem] sm:text-5xl uppercase tracking-wide text-[#3A3A3A] ">
             Our Services
          </h2>
       </div>
@@ -110,7 +117,7 @@ export default function ServicesScrollDriven() {
    // Reduced motion / no-JS-measurement fallback: plain scrollable row.
    if (reducedMotion) {
       return (
-         <section className="w-full border-b border-black/[0.05] bg-[#E6D8C7] py-24">
+         <section className="max-w-6xl px-6 md:px-12 border-b border-black/[0.05] bg-[#E6D8C7] py-24">
             {heading}
             <div className="hide-scrollbar flex gap-8 overflow-x-auto px-6 pb-4 md:px-12">
                {cards}
@@ -132,15 +139,15 @@ export default function ServicesScrollDriven() {
       <section
          ref={wrapperRef}
          style={{ height: wrapperHeight ? `${wrapperHeight}px` : "200vh" }}
-         className="relative w-full border-b border-black/[0.05] bg-[#E6D8C7]"
+         className="relative w-full border-b border-black/[0.05] bg-[#E6D8C7] md:max-w-[80%] mx-auto"
       >
-         <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden py-10">
+         <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden pt-[3rem] md:pt-10 py-10">
             {heading}
 
             <div
                ref={trackRef}
                style={{ transform: `translateX(-${translateX}px)` }}
-               className="flex w-max gap-8 pl-6 will-change-transform md:pl-16"
+               className="flex w-max gap-8 will-change-transform pl-2 ml-2"
             >
                {cards}
                <div className="w-2 shrink-0 sm:w-6" />

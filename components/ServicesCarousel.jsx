@@ -2,8 +2,8 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { SERVICES } from "@/lib/servicesData";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function ServicesCarousel() {
    const trackRef = useRef(null);
@@ -52,6 +52,18 @@ export default function ServicesCarousel() {
       });
    };
 
+   const goNext = () => {
+      if (activeIndex < SERVICES.length - 1) {
+         goToIndex(activeIndex + 1);
+      }
+   };
+
+   const goPrev = () => {
+      if (activeIndex > 0) {
+         goToIndex(activeIndex - 1);
+      }
+   };
+
    return (
       <section className="w-full border-b border-black/[0.05] bg-[#E6D8C7] py-24">
          <div className="mx-auto max-w-6xl px-6 md:px-12">
@@ -66,36 +78,58 @@ export default function ServicesCarousel() {
          </div>
 
          {/* Horizontal scroll-snap track, presented like a carousel */}
-         <div
-            ref={trackRef}
-            className="hide-scrollbar flex mx-auto snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-6 pb-4 md:max-w-[73rem] md:px-12"
-         >
-            {SERVICES.map((s) => (
-               <Link
-                  key={s.slug}
-                  href={`/services/${s.slug}`}
-                  data-card
-                  className="group flex max-w-[78%] shrink-0 snap-start flex-col text-left sm:w-[46%] lg:w-[33%]"
-               >
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-b-2xl rounded-t-[999px] border border-black/10 bg-[#3A3A3A]">
-                     <img
-                        src={s.image}
-                        alt={s.title}
-                        className="h-full w-full object-cover grayscale-[15%] transition-transform duration-500 group-hover:scale-105"
-                     />
-                  </div>
-                  <h3 className="mt-6 font-[family-name:var(--font-display)] text-xl uppercase tracking-wide text-[#3A3A3A]">
-                     {s.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#3A3A3A]/70">
-                     {s.description}
-                  </p>
-                  <span className="mt-4 inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all group-hover:gap-2">
-                     Read More
-                     <ArrowUpRight className="h-3.5 w-3.5" />
-                  </span>
-               </Link>
-            ))}
+         <div className="relative">
+            {/* left/right buttons here */}
+
+            {/* Left button (place before the track) */}
+            <button
+               type="button"
+               onClick={goPrev}
+               disabled={activeIndex === 0}
+               className="absolute left-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow transition hover:bg-white disabled:pointer-events-none disabled:opacity-40"
+            >
+               <ArrowLeft className="h-5 w-5 text-black" />
+            </button>
+            {/* Right button (also before the track) */}
+            <button
+               type="button"
+               onClick={goNext}
+               disabled={activeIndex === SERVICES.length - 1}
+               className="absolute right-6 text-black top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow transition hover:bg-white disabled:pointer-events-none disabled:opacity-40"
+            >
+               <ArrowRight className="h-5 w-5" />
+            </button>
+            <div
+               ref={trackRef}
+               className="hide-scrollbar flex mx-auto snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-6 pb-4 md:max-w-[73rem] md:px-12"
+            >
+               {SERVICES.map((s) => (
+                  <Link
+                     key={s.slug}
+                     href={`/services/${s.slug}`}
+                     data-card
+                     className="group flex max-w-[78%] shrink-0 snap-start flex-col text-left sm:w-[46%] lg:w-[33%]"
+                  >
+                     <div className="relative aspect-[3/4] w-full overflow-hidden rounded-b-2xl rounded-t-[999px] border border-black/10 bg-[#3A3A3A]">
+                        <img
+                           src={s.image}
+                           alt={s.title}
+                           className="h-full w-full object-cover grayscale-[15%] transition-transform duration-500 group-hover:scale-105"
+                        />
+                     </div>
+                     <h3 className="mt-6 font-[family-name:var(--font-display)] text-xl uppercase tracking-wide text-[#3A3A3A]">
+                        {s.title}
+                     </h3>
+                     <p className="mt-3 text-sm leading-relaxed text-[#3A3A3A]/70">
+                        {s.description}
+                     </p>
+                     <span className="mt-4 inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all group-hover:gap-2">
+                        Read More
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                     </span>
+                  </Link>
+               ))}
+            </div>
          </div>
 
          {/* Dot pagination indicator */}

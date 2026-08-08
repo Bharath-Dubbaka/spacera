@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 const SERVICES = [
    {
       title: "Residential Design",
-      image: "/gallery/03.png",
+      image: "/gallery/bedrooms/03.png",
       description:
          "Personalized home interiors that reflect your lifestyle, combining comfort, elegance, and practical living.",
    },
@@ -17,7 +17,7 @@ const SERVICES = [
    },
    {
       title: "Renovation & Styling",
-      image: "/gallery/06.png",
+      image: "/gallery/bedrooms/06.png",
       description:
          "Transform existing spaces with thoughtful renovations, custom furnishings, and curated décor for a fresh new look.",
    },
@@ -43,10 +43,12 @@ export default function ServicesSection() {
                      className="group flex flex-col items-center text-center"
                   >
                      <div className="relative aspect-[3/4] w-full max-w-[380px] overflow-hidden rounded-b-2xl rounded-t-[999px] border border-black/10 bg-[#3A3A3A]">
-                        <img
+                        <Image
                            src={s.image}
                            alt={s.title}
                            className="h-full w-full object-cover grayscale-[15%] transition-transform duration-500 group-hover:scale-105"
+                           fill
+                           sizes="(max-width: 768px) 90vw, 380px"
                         />
                      </div>
                      <h3 className="mt-6 font-[family-name:var(--font-display)] text-xl uppercase tracking-wide text-[#3A3A3A]">

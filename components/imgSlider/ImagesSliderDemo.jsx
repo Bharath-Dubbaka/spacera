@@ -6,7 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function ImagesSliderDemo() {
-   const images = ["/gallery/06.png", "/gallery/03.png", "/gallery/04.png"];
+   const images = [
+      "/gallery/06.png",
+      "/gallery/bedrooms/03.png",
+      "/gallery/04.png",
+   ];
    return (
       <ImagesSlider
          className="min-h-[90vh] mx-auto max-w-[90vw] rounded-2xl mt-20 justify-start"
