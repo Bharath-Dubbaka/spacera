@@ -8,6 +8,7 @@ const NAV = [
    { href: "/", label: "Home" },
    { href: "/about", label: "About" },
    { href: "/contact", label: "Contact" },
+   { href: "/faq", label: "FAQ" },
 ];
 
 const SOCIALS = [
@@ -23,11 +24,11 @@ export default function Footer() {
          <div className="mx-auto flex max-w-6xl flex-col gap-12 sm:flex-row sm:justify-between">
             <div className="max-w-sm">
                <span className="font-mono text-xs uppercase tracking-[0.25em] text-paper">
-                  spacera Web Arts
+                  spacera Studios
                </span>
                <p className="mt-4 text-sm leading-relaxed text-stone">
-                  Every next piece begins with A space and time fabric that
-                  folds back on itself.
+                  We create refined residential and commercial interiors that
+                  blend functionality, comfort, and timeless aesthetics.
                </p>
             </div>
 
@@ -68,7 +69,7 @@ export default function Footer() {
 
          <div className="mx-auto mt-16 flex max-w-6xl flex-col-reverse items-center gap-6 border-t border-bronze-deep/30 pt-6 sm:flex-row sm:justify-between">
             <span className="font-mono text-[11px] text-stone">
-               © {new Date().getFullYear()} spacera Art Hub
+               © {new Date().getFullYear()} Spacera Studios
             </span>
             <Image
                src="/gallery/logo.png"

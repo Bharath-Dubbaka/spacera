@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 const LINKS = [
    { title: "Home", href: "/", src: "gallery/optimized/bedrooms/01.webp" },
    { title: "Projects", href: "/projects", src: "gallery/optimized/02.webp" },
-   { title: "About Us", href: "/about", src: "gallery/optimized/bedrooms/03.webp" },
+   { title: "FAQ's", href: "/faq", src: "gallery/optimized/bedrooms/03.webp" },
    // { title: "Lookbook", href: "/", src: "gallery/optimized/04.webp" },
    { title: "Contact", href: "/contact", src: "gallery/optimized/01.webp" },
 ];
