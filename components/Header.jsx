@@ -7,11 +7,11 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 const LINKS = [
-   { title: "Home", href: "/", src: "gallery/bedrooms/01.jpg" },
-   { title: "Projects", href: "/projects", src: "gallery/02.png" },
-   { title: "About Us", href: "/about", src: "gallery/bedrooms/03.png" },
-   // { title: "Lookbook", href: "/", src: "gallery/04.png" },
-   { title: "Contact", href: "/contact", src: "gallery/01.jpg" },
+   { title: "Home", href: "/", src: "gallery/optimized/bedrooms/01.webp" },
+   { title: "Projects", href: "/projects", src: "gallery/optimized/02.webp" },
+   { title: "About Us", href: "/about", src: "gallery/optimized/bedrooms/03.webp" },
+   // { title: "Lookbook", href: "/", src: "gallery/optimized/04.webp" },
+   { title: "Contact", href: "/contact", src: "gallery/optimized/01.webp" },
 ];
 
 const heightAnim = {

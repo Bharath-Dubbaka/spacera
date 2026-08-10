@@ -1,416 +1,304 @@
-// "use client";
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
-
-// export default function ContactPage() {
-//    const router = useRouter();
-//    const [formData, setFormData] = useState({
-//       fullName: "",
-//       email: "",
-//       mobile: "",
-//       city: "",
-//       size: "2 BHK",
-//       type: "Apartment",
-//       budget: "₹12 to ₹15 Lakhs",
-//       message: "",
-//    });
-
-//    const handleSubmit = (e) => {
-//       e.preventDefault();
-//       console.log("Submitted Form Data:", formData);
-//       alert("Thank you! We will get back to you soon.");
-//       router.push("/");
-//    };
-
-//    return (
-//       <main className="min-h-screen bg-[#E6D8C7] pt-28 pb-16 px-4 flex items-center justify-center">
-//          <div className="w-full max-w-3xl mx-auto p-6 sm:p-10 bg-[#1C1C1A] text-black border border-[#1C1C1A]/10 rounded-2xl shadow-2xl">
-//             {/* Title Header */}
-//             <div className="text-center mb-8">
-//                <p className="text-[10px] sm:text-xs font-mono tracking-widest text-[#E6D8C7]/60 uppercase mb-2">
-//                   This is what we define
-//                </p>
-//                <h1 className="text-2xl sm:text-4xl font-serif tracking-tight font-normal text-[#E6D8C7] mb-3 leading-tight uppercase">
-//                   Ready to turn your dream home into a reality?
-//                </h1>
-//                <p className="text-xs sm:text-sm text-[#E6D8C7]/70 font-light max-w-xl mx-auto">
-//                   Let us help bring your dreams to life with precision, passion,
-//                   and unparalleled expertise.
-//                </p>
-//             </div>
-
-//             <form onSubmit={handleSubmit} className="space-y-4">
-//                {/* Full Name */}
-//                <div>
-//                   <input
-//                      type="text"
-//                      required
-//                      placeholder="Full Name*"
-//                      value={formData.fullName}
-//                      onChange={(e) =>
-//                         setFormData({ ...formData, fullName: e.target.value })
-//                      }
-//                      className="w-full px-4 py-3 bg-transparent border border-[#E6D8C7]/20 rounded-xl text-sm text-[#E6D8C7] placeholder-[#E6D8C7]/40 focus:outline-none focus:border-[#E6D8C7] transition-colors"
-//                   />
-//                </div>
-
-//                {/* Email & Mobile Number Row */}
-//                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-//                   <input
-//                      type="email"
-//                      required
-//                      placeholder="Email Address*"
-//                      value={formData.email}
-//                      onChange={(e) =>
-//                         setFormData({ ...formData, email: e.target.value })
-//                      }
-//                      className="w-full px-4 py-3 bg-transparent border border-[#E6D8C7]/20 rounded-xl text-sm text-[#E6D8C7] placeholder-[#E6D8C7]/40 focus:outline-none focus:border-[#E6D8C7] transition-colors"
-//                   />
-//                   <input
-//                      type="tel"
-//                      required
-//                      placeholder="Mobile Number*"
-//                      value={formData.mobile}
-//                      onChange={(e) =>
-//                         setFormData({ ...formData, mobile: e.target.value })
-//                      }
-//                      className="w-full px-4 py-3 bg-transparent border border-[#E6D8C7]/20 rounded-xl text-sm text-[#E6D8C7] placeholder-[#E6D8C7]/40 focus:outline-none focus:border-[#E6D8C7] transition-colors"
-//                   />
-//                </div>
-
-//                {/* City */}
-//                <div>
-//                   <input
-//                      type="text"
-//                      required
-//                      placeholder="City*"
-//                      value={formData.city}
-//                      onChange={(e) =>
-//                         setFormData({ ...formData, city: e.target.value })
-//                      }
-//                      className="w-full px-4 py-3 bg-transparent border border-[#E6D8C7]/20 rounded-xl text-sm text-[#E6D8C7] placeholder-[#E6D8C7]/40 focus:outline-none focus:border-[#E6D8C7] transition-colors"
-//                   />
-//                </div>
-
-//                {/* Dynamic Selection Pills Section */}
-//                <div className="pt-2">
-//                   <p className="text-[11px] font-semibold uppercase tracking-wider text-[#E6D8C7]/50 mb-3">
-//                      Tell us about your home
-//                   </p>
-
-//                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
-//                      {/* Size Selector */}
-//                      <div>
-//                         <p className="text-xs text-[#E6D8C7]/80 mb-2 font-medium">
-//                            Size:
-//                         </p>
-//                         <div className="flex flex-wrap gap-2">
-//                            {["2 BHK", "3 BHK", "4 BHK or more"].map((item) => (
-//                               <button
-//                                  key={item}
-//                                  type="button"
-//                                  onClick={() =>
-//                                     setFormData({ ...formData, size: item })
-//                                  }
-//                                  className={`px-4 py-2 text-xs rounded-full border transition-all ${
-//                                     formData.size === item
-//                                        ? "border-[#E6D8C7] bg-[#E6D8C7] text-[#1C1C1A] font-bold"
-//                                        : "border-[#E6D8C7]/20 text-[#E6D8C7]/70 hover:border-[#E6D8C7]/50"
-//                                  }`}
-//                               >
-//                                  o {item}
-//                               </button>
-//                            ))}
-//                         </div>
-//                      </div>
-
-//                      {/* Type Selector */}
-//                      <div>
-//                         <p className="text-xs text-[#E6D8C7]/80 mb-2 font-medium">
-//                            Type:
-//                         </p>
-//                         <div className="flex flex-wrap gap-2">
-//                            {["Independent / Villa", "Apartment"].map((item) => (
-//                               <button
-//                                  key={item}
-//                                  type="button"
-//                                  onClick={() =>
-//                                     setFormData({ ...formData, type: item })
-//                                  }
-//                                  className={`px-4 py-2 text-xs rounded-full border transition-all ${
-//                                     formData.type === item
-//                                        ? "border-[#E6D8C7] bg-[#E6D8C7] text-[#1C1C1A] font-bold"
-//                                        : "border-[#E6D8C7]/20 text-[#E6D8C7]/70 hover:border-[#E6D8C7]/50"
-//                                  }`}
-//                               >
-//                                  o {item}
-//                               </button>
-//                            ))}
-//                         </div>
-//                      </div>
-//                   </div>
-
-//                   {/* Tentative Budget Selector */}
-//                   <div className="mb-4">
-//                      <p className="text-xs text-[#E6D8C7]/80 mb-2 font-medium">
-//                         Tentative Budget:
-//                      </p>
-//                      <div className="flex flex-wrap gap-2">
-//                         {[
-//                            "₹12 to ₹15 Lakhs",
-//                            "₹16 - ₹20 Lakhs",
-//                            "₹21 - ₹30 Lakhs",
-//                            "₹31 L - 1 Cr+",
-//                         ].map((item) => (
-//                            <button
-//                               key={item}
-//                               type="button"
-//                               onClick={() =>
-//                                  setFormData({ ...formData, budget: item })
-//                               }
-//                               className={`px-4 py-2 text-xs rounded-full border transition-all ${
-//                                  formData.budget === item
-//                                     ? "border-[#E6D8C7] bg-[#E6D8C7] text-[#1C1C1A] font-bold"
-//                                     : "border-[#E6D8C7]/20 text-[#E6D8C7]/70 hover:border-[#E6D8C7]/50"
-//                               }`}
-//                            >
-//                               o {item}
-//                            </button>
-//                         ))}
-//                      </div>
-//                   </div>
-//                </div>
-
-//                {/* Message */}
-//                <div>
-//                   <textarea
-//                      rows="3"
-//                      placeholder="Message*"
-//                      value={formData.message}
-//                      onChange={(e) =>
-//                         setFormData({ ...formData, message: e.target.value })
-//                      }
-//                      className="w-full px-4 py-3 bg-transparent border border-[#E6D8C7]/20 rounded-xl text-sm text-[#E6D8C7] placeholder-[#E6D8C7]/40 focus:outline-none focus:border-[#E6D8C7] transition-colors resize-none"
-//                   ></textarea>
-//                </div>
-
-//                {/* Submit Button */}
-//                <button
-//                   type="submit"
-//                   className="w-full py-3.5 bg-[#E6D8C7] text-[#1C1C1A] font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-all shadow-lg cursor-pointer"
-//                >
-//                   Submit Quote Request
-//                </button>
-//             </form>
-//          </div>
-//       </main>
-//    );
-// }
-
 "use client";
-import { useState } from "react";
+
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import emailjs from "@emailjs/browser";
+
+const INITIAL_FORM_DATA = {
+   fullName: "",
+   email: "",
+   mobile: "",
+   city: "",
+   possessionDate: "",
+   size: "2 BHK",
+   type: "Apartment",
+   budget: "₹3 to ₹5 Lakhs",
+};
 
 export default function ContactPage() {
    const router = useRouter();
-   const [formData, setFormData] = useState({
-      fullName: "",
-      email: "",
-      mobile: "",
-      city: "",
-      size: "2 BHK",
-      type: "Apartment",
-      budget: "₹12 to ₹15 Lakhs",
-      message: "",
-   });
+   const formRef = useRef(null);
 
-   const handleSubmit = (e) => {
+   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+   const [isSubmitting, setIsSubmitting] = useState(false);
+
+   const updateField = (field, value) => {
+      setFormData((current) => ({
+         ...current,
+         [field]: value,
+      }));
+   };
+
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("Submitted Form Data:", formData);
-      alert("Thank you! We will get back to you soon.");
-      router.push("/");
+
+      if (!formRef.current) return;
+
+      setIsSubmitting(true);
+
+      try {
+         await emailjs.sendForm(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+            formRef.current,
+            {
+               publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+            },
+         );
+
+         alert(
+            "Thank you! Your enquiry has been submitted successfully. We will get back to you soon.",
+         );
+
+         setFormData(INITIAL_FORM_DATA);
+
+         router.push("/");
+      } catch (error) {
+         console.error("EmailJS submission error:", error);
+
+         alert(
+            "Something went wrong while submitting your enquiry. Please try again.",
+         );
+      } finally {
+         setIsSubmitting(false);
+      }
    };
 
    return (
-      <main className="min-h-screen bg-[#E6D8C7] pt-28 pb-16 px-4 flex items-center justify-center">
-         <div className="w-full max-w-3xl mx-auto p-6 sm:p-10 bg-[#E6D8C7] text-black border border-black/10 rounded-2xl shadow-xl">
-            {/* Title Header */}
-            <div className="text-center mb-8">
-               <p className="text-[10px] sm:text-xs font-mono tracking-widest text-black/60 uppercase mb-2">
-                  This is what we define
-               </p>
-               <h1 className="text-2xl sm:text-4xl font-serif tracking-tight font-normal text-black mb-3 leading-tight uppercase">
-                  Ready to turn your dream home into a reality?
-               </h1>
-               <p className="text-xs sm:text-sm text-black/70 font-light max-w-xl mx-auto">
-                  Let us help bring your dreams to life with precision, passion,
-                  and unparalleled expertise.
-               </p>
-            </div>
+      <main
+         className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6"
+         style={{
+            backgroundImage: "url('/gallery/optimized/bedrooms/03.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+         }}
+      >
+         {/* Background overlay */}
+         <div className="absolute inset-0 bg-[#E6D8C7]/40" />
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-               {/* Full Name */}
-               <div>
-                  <input
-                     type="text"
-                     required
-                     placeholder="Full Name*"
-                     value={formData.fullName}
-                     onChange={(e) =>
-                        setFormData({ ...formData, fullName: e.target.value })
-                     }
-                     className="w-full px-4 py-3 bg-white/40 border border-black/20 rounded-xl text-sm text-black placeholder-black/50 focus:outline-none focus:border-black transition-colors"
-                  />
-               </div>
+         <div className="relative z-10 flex min-h-[calc(100vh-7rem)] items-center justify-center">
+            <div className="w-full max-w-3xl rounded-2xl border border-white/50 bg-[#E6D8C7]/95 p-6 text-black shadow-2xl backdrop-blur-sm sm:p-10">
+               {/* Header */}
+               <div className="mb-8 text-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
+                     This is what we define
+                  </span>
 
-               {/* Email & Mobile Number Row */}
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input
-                     type="email"
-                     required
-                     placeholder="Email Address*"
-                     value={formData.email}
-                     onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                     }
-                     className="w-full px-4 py-3 bg-white/40 border border-black/20 rounded-xl text-sm text-black placeholder-black/50 focus:outline-none focus:border-black transition-colors"
-                  />
-                  <input
-                     type="tel"
-                     required
-                     placeholder="Mobile Number*"
-                     value={formData.mobile}
-                     onChange={(e) =>
-                        setFormData({ ...formData, mobile: e.target.value })
-                     }
-                     className="w-full px-4 py-3 bg-white/40 border border-black/20 rounded-xl text-sm text-black placeholder-black/50 focus:outline-none focus:border-black transition-colors"
-                  />
-               </div>
+                  <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl uppercase leading-[0.95] sm:text-5xl">
+                     Ready to turn your dream home
+                     <br />
+                     into a reality?
+                  </h1>
 
-               {/* City */}
-               <div>
-                  <input
-                     type="text"
-                     required
-                     placeholder="City*"
-                     value={formData.city}
-                     onChange={(e) =>
-                        setFormData({ ...formData, city: e.target.value })
-                     }
-                     className="w-full px-4 py-3 bg-white/40 border border-black/20 rounded-xl text-sm text-black placeholder-black/50 focus:outline-none focus:border-black transition-colors"
-                  />
-               </div>
-
-               {/* Dynamic Selection Pills Section */}
-               <div className="pt-2">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-black/60 mb-3">
-                     Tell us about your home
+                  <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-black/60">
+                     Let us help bring your dream home to life with precision,
+                     passion, and unparalleled expertise.
                   </p>
-
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
-                     {/* Size Selector */}
-                     <div>
-                        <p className="text-xs text-black/80 mb-2 font-medium">
-                           Size:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                           {["2 BHK", "3 BHK", "4 BHK or more"].map((item) => (
-                              <button
-                                 key={item}
-                                 type="button"
-                                 onClick={() =>
-                                    setFormData({ ...formData, size: item })
-                                 }
-                                 className={`px-4 py-2 text-xs rounded-full border transition-all ${
-                                    formData.size === item
-                                       ? "border-black bg-black text-[#E6D8C7] font-bold"
-                                       : "border-black/20 text-black/80 hover:border-black/50 bg-white/20"
-                                 }`}
-                              >
-                                 {item}
-                              </button>
-                           ))}
-                        </div>
-                     </div>
-
-                     {/* Type Selector */}
-                     <div>
-                        <p className="text-xs text-black/80 mb-2 font-medium">
-                           Type:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                           {["Independent / Villa", "Apartment"].map((item) => (
-                              <button
-                                 key={item}
-                                 type="button"
-                                 onClick={() =>
-                                    setFormData({ ...formData, type: item })
-                                 }
-                                 className={`px-4 py-2 text-xs rounded-full border transition-all ${
-                                    formData.type === item
-                                       ? "border-black bg-black text-[#E6D8C7] font-bold"
-                                       : "border-black/20 text-black/80 hover:border-black/50 bg-white/20"
-                                 }`}
-                              >
-                                 {item}
-                              </button>
-                           ))}
-                        </div>
-                     </div>
-                  </div>
-
-                  {/* Tentative Budget Selector */}
-                  <div className="mb-4">
-                     <p className="text-xs text-black/80 mb-2 font-medium">
-                        Tentative Budget:
-                     </p>
-                     <div className="flex flex-wrap gap-2">
-                        {[
-                           "₹12 to ₹15 Lakhs",
-                           "₹16 - ₹20 Lakhs",
-                           "₹21 - ₹30 Lakhs",
-                           "₹31 L - 1 Cr+",
-                        ].map((item) => (
-                           <button
-                              key={item}
-                              type="button"
-                              onClick={() =>
-                                 setFormData({ ...formData, budget: item })
-                              }
-                              className={`px-4 py-2 text-xs rounded-full border transition-all ${
-                                 formData.budget === item
-                                    ? "border-black bg-black text-[#E6D8C7] font-bold"
-                                    : "border-black/20 text-black/80 hover:border-black/50 bg-white/20"
-                              }`}
-                           >
-                              {item}
-                           </button>
-                        ))}
-                     </div>
-                  </div>
                </div>
 
-               {/* Message */}
-               <div>
-                  <textarea
-                     rows="3"
-                     placeholder="Message*"
-                     value={formData.message}
-                     onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                     }
-                     className="w-full px-4 py-3 bg-white/40 border border-black/20 rounded-xl text-sm text-black placeholder-black/50 focus:outline-none focus:border-black transition-colors resize-none"
-                  ></textarea>
-               </div>
-
-               {/* Submit Button */}
-               <button
-                  type="submit"
-                  className="w-full py-3.5 bg-black text-[#E6D8C7] font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-neutral-800 transition-all shadow-md cursor-pointer"
+               {/* Form */}
+               <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
                >
-                  Submit Quote Request
-               </button>
-            </form>
+                  {/* Hidden values for EmailJS */}
+                  <input type="hidden" name="home_size" value={formData.size} />
+
+                  <input
+                     type="hidden"
+                     name="property_type"
+                     value={formData.type}
+                  />
+
+                  <input type="hidden" name="budget" value={formData.budget} />
+
+                  {/* Name */}
+                  <div>
+                     <input
+                        type="text"
+                        name="full_name"
+                        placeholder="Full Name*"
+                        required
+                        value={formData.fullName}
+                        onChange={(e) =>
+                           updateField("fullName", e.target.value)
+                        }
+                        className="w-full rounded-xl border border-black/15 bg-white/40 px-4 py-3 text-sm placeholder:text-black/50 focus:border-black/40 focus:outline-none focus:ring-0"
+                     />
+                  </div>
+
+                  {/* Email + Mobile */}
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                     <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address*"
+                        required
+                        value={formData.email}
+                        onChange={(e) => updateField("email", e.target.value)}
+                        className="w-full rounded-xl border border-black/15 bg-white/40 px-4 py-3 text-sm placeholder:text-black/50 focus:border-black/40 focus:outline-none focus:ring-0"
+                     />
+
+                     <input
+                        type="tel"
+                        name="mobile"
+                        placeholder="Mobile Number*"
+                        required
+                        inputMode="tel"
+                        value={formData.mobile}
+                        onChange={(e) => updateField("mobile", e.target.value)}
+                        className="w-full rounded-xl border border-black/15 bg-white/40 px-4 py-3 text-sm placeholder:text-black/50 focus:border-black/40 focus:outline-none focus:ring-0"
+                     />
+                  </div>
+
+                  {/* City + Possession Date */}
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                     <input
+                        type="text"
+                        name="city"
+                        placeholder="City*"
+                        required
+                        value={formData.city}
+                        onChange={(e) => updateField("city", e.target.value)}
+                        className="w-full rounded-xl border border-black/15 bg-white/40 px-4 py-3 text-sm placeholder:text-black/50 focus:border-black/40 focus:outline-none focus:ring-0"
+                     />
+
+                     <div className="relative">
+                        <label
+                           htmlFor="possessionDate"
+                           className="pointer-events-none absolute left-4 top-1.5 z-10 text-[9px] uppercase tracking-[0.08em] text-black/45"
+                        >
+                           Possession Date
+                        </label>
+
+                        <input
+                           id="possessionDate"
+                           type="date"
+                           name="possession_date"
+                           required
+                           value={formData.possessionDate}
+                           onChange={(e) =>
+                              updateField("possessionDate", e.target.value)
+                           }
+                           className="w-full rounded-xl border border-black/15 bg-white/40 px-4 pb-2 pt-6 text-sm text-black focus:border-black/40 focus:outline-none focus:ring-0"
+                        />
+                     </div>
+                  </div>
+
+                  {/* Home Details */}
+                  <div className="pt-3">
+                     <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-black/60">
+                        Tell us about your home
+                     </p>
+
+                     {/* Home Size */}
+                     <div className="mb-5">
+                        <p className="mb-2 text-[10px] text-black/55">Size:</p>
+
+                        <div className="flex flex-wrap gap-2">
+                           {["2 BHK", "3 BHK", "4 BHK or more"].map(
+                              (option) => {
+                                 const selected = formData.size === option;
+
+                                 return (
+                                    <button
+                                       key={option}
+                                       type="button"
+                                       onClick={() =>
+                                          updateField("size", option)
+                                       }
+                                       className={`rounded-full px-4 py-2 text-[10px] uppercase tracking-wide transition ${
+                                          selected
+                                             ? "bg-black text-white"
+                                             : "border border-black/15 bg-white/30 text-black/60 hover:bg-white/60"
+                                       }`}
+                                    >
+                                       {option}
+                                    </button>
+                                 );
+                              },
+                           )}
+                        </div>
+                     </div>
+
+                     {/* Property Type */}
+                     <div className="mb-5">
+                        <p className="mb-2 text-[10px] text-black/55">Type:</p>
+
+                        <div className="flex flex-wrap gap-2">
+                           {["Independent / Villa", "Apartment"].map(
+                              (option) => {
+                                 const selected = formData.type === option;
+
+                                 return (
+                                    <button
+                                       key={option}
+                                       type="button"
+                                       onClick={() =>
+                                          updateField("type", option)
+                                       }
+                                       className={`rounded-full px-4 py-2 text-[10px] uppercase tracking-wide transition ${
+                                          selected
+                                             ? "bg-black text-white"
+                                             : "border border-black/15 bg-white/30 text-black/60 hover:bg-white/60"
+                                       }`}
+                                    >
+                                       {option}
+                                    </button>
+                                 );
+                              },
+                           )}
+                        </div>
+                     </div>
+
+                     {/* Budget */}
+                     <div>
+                        <p className="mb-2 text-[10px] text-black/55">
+                           Tentative Budget:
+                        </p>
+
+                        <div className="flex flex-wrap gap-2">
+                           {[
+                              "₹3 to ₹5 Lakhs",
+                              "₹5 to ₹8 Lakhs",
+                              "₹8 to ₹12 Lakhs",
+                              "₹12 to ₹15 Lakhs",
+                           ].map((option) => {
+                              const selected = formData.budget === option;
+
+                              return (
+                                 <button
+                                    key={option}
+                                    type="button"
+                                    onClick={() =>
+                                       updateField("budget", option)
+                                    }
+                                    className={`rounded-full px-4 py-2 text-[10px] uppercase tracking-wide transition ${
+                                       selected
+                                          ? "bg-black text-white"
+                                          : "border border-black/15 bg-white/30 text-black/60 hover:bg-white/60"
+                                    }`}
+                                 >
+                                    {option}
+                                 </button>
+                              );
+                           })}
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Submit */}
+                  <button
+                     type="submit"
+                     disabled={isSubmitting}
+                     className="mt-4 flex w-full items-center justify-center rounded-xl bg-black px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#BC4424] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                     {isSubmitting ? "Submitting..." : "Submit Quote Request"}
+                  </button>
+               </form>
+            </div>
          </div>
       </main>
    );

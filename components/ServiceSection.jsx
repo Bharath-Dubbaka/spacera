@@ -5,19 +5,19 @@ import { ArrowUpRight } from "lucide-react";
 const SERVICES = [
    {
       title: "Residential Design",
-      image: "/gallery/bedrooms/03.png",
+      image: "/gallery/optimized/bedrooms/03.webp",
       description:
          "Personalized home interiors that reflect your lifestyle, combining comfort, elegance, and practical living.",
    },
    {
       title: "Commercial Spaces",
-      image: "/gallery/02.png",
+      image: "/gallery/optimized/02.webp",
       description:
          "Modern office, retail, and hospitality interiors designed to elevate experiences and strengthen your brand identity.",
    },
    {
       title: "Renovation & Styling",
-      image: "/gallery/bedrooms/06.png",
+      image: "/gallery/optimized/bedrooms/06.webp",
       description:
          "Transform existing spaces with thoughtful renovations, custom furnishings, and curated décor for a fresh new look.",
    },

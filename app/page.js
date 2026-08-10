@@ -8,6 +8,7 @@ import ServicesCarousel from "@/components/ServicesCarousel";
 import ServicesScrollDriven from "@/components/ServicesScrollDriven";
 import EndToEndSolutions from "@/components/EndToEndSolutions";
 import EssentialPackage from "@/components/EssentialPackage";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
    return (
@@ -19,8 +20,9 @@ export default function Home() {
          <ServicesScrollDriven />
          {/*         <ServiceSection /> */}
          {/* <HeroSection /> */}
-         <EndToEndSolutions/>
+         <EndToEndSolutions />
          <EssentialPackage />
+         <FAQ />
       </main>
    );
 }

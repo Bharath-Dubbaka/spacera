@@ -20,7 +20,7 @@ export default function MiniHero() {
             {/* Left: large portrait image with overlaid title + quick links */}
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-[#3A3A3A] md:col-span-7 md:aspect-auto">
                <Image
-                  src="/gallery/bedrooms/05.png"
+                  src="/gallery/optimized/bedrooms/05.webp"
                   alt="Artistry in progress"
                   fill
                   className="object-cover"
@@ -57,13 +57,13 @@ export default function MiniHero() {
             {/* Right: two stacked feature cards */}
             <div className="flex flex-col gap-6 md:col-span-5 ">
                <FeatureCard
-                  image="/gallery/02.png"
+                  image="/gallery/optimized/02.webp"
                   label="Interior Design"
                   caption="Thoughtfully crafted interiors that balance aesthetics, functionality, and timeless elegance for every lifestyle."
                   cta="View Projects"
                />
                <FeatureCard
-                  image="/gallery/bedrooms/03.png"
+                  image="/gallery/optimized/bedrooms/03.webp"
                   label="Consultation"
                   caption="From concept to completion, our design experts guide you through every step to create spaces tailored to your vision."
                   cta="Book Consultation"

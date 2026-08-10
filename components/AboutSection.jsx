@@ -13,7 +13,7 @@ export default function AboutSection() {
                <div className="absolute -inset-2 border border-white/10 rounded-lg translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300 pointer-events-none" />
                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-neutral-900 border border-white/10">
                   <Image
-                     src="/gallery/new_f.png"
+                     src="/gallery/optimized/new_f.webp"
                      alt="spacera design"
                      fill
                      className="object-cover transition-transform duration-500 group-hover:scale-105"

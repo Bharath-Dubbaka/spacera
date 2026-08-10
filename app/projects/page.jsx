@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { PROJECT_SECTIONS } from "./projectsData";
@@ -9,8 +9,10 @@ import Image from "next/image";
 function Carousel({ projects }) {
    const trackRef = useRef(null);
    const [active, setActive] = useState(0);
+   const [isPaused, setIsPaused] = useState(false);
+   const activeRef = useRef(0);
 
-   const scrollTo = (index) => {
+   const scrollTo = (index, smooth = true) => {
       const el = trackRef.current;
       if (!el) return;
 
@@ -19,12 +21,12 @@ function Carousel({ projects }) {
 
       if (!card) return;
 
-      card.scrollIntoView({
-         behavior: "smooth",
-         inline: "start",
-         block: "nearest",
+      el.scrollTo({
+         left: card.offsetLeft,
+         behavior: smooth ? "smooth" : "auto",
       });
 
+      activeRef.current = index;
       setActive(index);
    };
 
@@ -39,6 +41,26 @@ function Carousel({ projects }) {
          scrollTo(active - 1);
       }
    };
+
+   useEffect(() => {
+      if (!projects?.length || projects.length <= 1 || isPaused) {
+         return;
+      }
+
+      const interval = setInterval(() => {
+         const current = activeRef.current;
+         const isLast = current >= projects.length - 1;
+
+         if (isLast) {
+            // Go back to the first card
+            scrollTo(0);
+         } else {
+            scrollTo(current + 1);
+         }
+      }, 4000);
+
+      return () => clearInterval(interval);
+   }, [projects.length, isPaused]);
 
    return (
       <div className="relative mt-10">
@@ -60,6 +82,8 @@ function Carousel({ projects }) {
 
          <div
             ref={trackRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
             className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth"
          >
             {projects.map((project, index) => (
@@ -69,18 +93,14 @@ function Carousel({ projects }) {
                   className="group w-[85%] shrink-0 snap-start sm:w-[48%] lg:w-[32%]"
                >
                   <div className="overflow-hidden rounded-[2rem]">
-                     <img
+                     <Image
                         src={project.image}
                         alt={project.title}
+                        width={800}
+                        height={1000}
+                        sizes="(max-width: 640px) 85vw, (max-width: 1024px) 48vw, 32vw"
                         className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
                      />
-                     {/* <Image
-                        fill
-                        src={project.image}
-                        alt={project.title}
-                        className=" object-cover"
-                        sizes="(max-width: 768px) 90vw, 380px"
-                     /> */}
                   </div>
 
                   <h3 className="mt-5 font-[family-name:var(--font-display)] text-xl uppercase tracking-wide text-[#3A3A3A]">
@@ -109,10 +129,21 @@ export default function ProjectsPage() {
    return (
       <main className="bg-[#E6D8C7] text-[#3A3A3A]">
          {/* Hero */}
+         {/* Hero */}
+         <section
+            className="relative overflow-hidden border-b border-black/10 px-6 py-24 md:px-12"
+            style={{
+               backgroundImage:
+                  "url('/gallery/optimized/kitchen/kitchen-1.webp')",
+               backgroundSize: "cover",
+               backgroundPosition: "center",
+            }}
+         >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/35" />
 
-         <section className="border-b border-black/10 px-6 py-24 md:px-12">
-            <div className="mx-auto max-w-6xl text-center">
-               <span className="text-xs uppercase tracking-[0.35em] text-[#BC4424]">
+            <div className="relative z-10 mx-auto max-w-6xl text-center text-white">
+               <span className="text-xs uppercase tracking-[0.35em] text-white/80">
                   Portfolio
                </span>
 
@@ -122,7 +153,7 @@ export default function ProjectsPage() {
                   Spaces
                </h1>
 
-               <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-black/60">
+               <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-white/80">
                   Explore a curated collection of residential and commercial
                   interiors designed with timeless aesthetics and thoughtful
                   functionality.

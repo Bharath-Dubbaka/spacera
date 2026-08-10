@@ -7,9 +7,10 @@ import Image from "next/image";
 
 export function ImagesSliderDemo() {
    const images = [
-      "/gallery/optimized/04.jpg",
-      "/gallery/optimized/02.jpg",
-      "/gallery/optimized/pooja.jpg",
+      "/gallery/optimized/04.webp",
+      "/gallery/optimized/02.webp",
+      "/gallery/optimized/pooja.webp",
+      "/gallery/optimized/new_f.webp",
    ];
    return (
       <ImagesSlider

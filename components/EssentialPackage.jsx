@@ -6,10 +6,10 @@ export default function EssentialPackage() {
    const [showDetails, setShowDetails] = useState(false);
    const [activeImage, setActiveImage] = useState(0);
    const packageImages = [
-      "/gallery/bedrooms/06.png",
-      "/gallery/kitchen/kitchen-2.jpg",
-      "/gallery/kitchen/kitchen-1.jpg",
-      "/gallery/bedrooms/03.png",
+      "/gallery/optimized/bedrooms/06.webp",
+      "/gallery/optimized/kitchen/kitchen-2.webp",
+      "/gallery/optimized/kitchen/kitchen-1.webp",
+      "/gallery/optimized/bedrooms/03.webp",
    ];
 
    const rooms = [
@@ -61,7 +61,7 @@ export default function EssentialPackage() {
    useEffect(() => {
       const interval = setInterval(() => {
          setActiveImage((prev) => (prev + 1) % packageImages.length);
-      }, 500);
+      }, 1500);
 
       return () => clearInterval(interval);
    }, []);

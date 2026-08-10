@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+
+
+
 # testing
 /coverage
 
@@ -39,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Original high-resolution images
+og-imgs/
