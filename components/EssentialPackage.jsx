@@ -19,32 +19,20 @@ export default function EssentialPackage() {
       },
       {
          name: "Living Room",
-         items: [
-            "Premium TV display unit with aluminium profile & glass shutter",
-         ],
+         items: ["Premium TV display unit and luxury sofa"],
       },
       {
          name: "Dining Room",
-         items: [
-            "Medley black finish dining table 6 Seater",
-            "Briano dining chair (3 Nos)",
-            "3 Seater dining bench - (1 No)",
-         ],
+         items: ["Premium finish crocery unit with cabinets and shutters"],
       },
       {
          name: "Master Bedroom",
-         items: [
-            "Soft close 3 door hinged wardrobe with grey wooden handles",
-            "Queen size bed with head board, without bottom drawer",
-            "Open type bed side table (2 Nos)",
-         ],
+         items: ["Soft close 3 door hinged wardrobe with grey wooden handles"],
       },
       {
          name: "Guest Bedroom",
          items: [
-            "Soft close 3 door hinged wardrobe with grey wooden handles",
-            "Queen size bed with head board, without bottom drawer",
-            "Open type bed side table (2 Nos)",
+            "Soft close 3 door hinged wardrobe with handles and premium finish",
          ],
       },
       {
@@ -52,8 +40,7 @@ export default function EssentialPackage() {
          items: [
             "Bottom cabinets",
             "Over head cabinets",
-            "Hettich (German Made – 15 years warranty) Accessories – 6 Nos*",
-            "Hood and Hob – Faber",
+            "(German Made – 15 years warranty) Accessories – 6 Nos*",
          ],
       },
    ];
