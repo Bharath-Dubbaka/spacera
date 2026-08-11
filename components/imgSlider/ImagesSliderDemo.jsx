@@ -14,7 +14,7 @@ export function ImagesSliderDemo() {
    ];
    return (
       <ImagesSlider
-         className="min-h-[90vh] mx-auto max-w-[90vw] rounded-2xl mt-20 justify-start"
+         className="min-h-[90vh] mx-auto max-w-[90vw] rounded-2xl mt-16 justify-start"
          images={images}
       >
          {/* <motion.div
@@ -54,7 +54,7 @@ export function ImagesSliderDemo() {
                <Link href="/" className="inline-flex items-center gap-4 group">
                   <div className="relative h-16 w-16">
                      <Image
-                        src="/gallery/logo.png"
+                        src="/gallery/optimized/logo.webp"
                         alt="Spacera"
                         fill
                         className="object-contain"

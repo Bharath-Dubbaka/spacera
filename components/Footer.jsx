@@ -72,7 +72,7 @@ export default function Footer() {
                © {new Date().getFullYear()} Spacera Studios
             </span>
             <Image
-               src="/gallery/logo.png"
+               src="/gallery/optimized/logo.webp"
                alt="Logo"
                width={190}
                height={190}

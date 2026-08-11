@@ -175,7 +175,7 @@ export default function EssentialPackage() {
                               Package includes
                            </span>
 
-                           <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase">
+                           <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase text-[#BC4424]">
                               Spaces &amp; Details
                            </h3>
                         </div>

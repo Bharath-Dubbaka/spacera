@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const QUICK_LINKS = ["Residential", "Commercial", "Renovations", "Get a Quote"];
 
@@ -94,10 +95,14 @@ function FeatureCard({ image, label, caption, cta }) {
             <p className="text-xs leading-relaxed text-[#3A3A3A]/80 sm:text-sm">
                {caption}
             </p>
-            <button className="inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all hover:gap-2">
+
+            <Link
+               href="/projects"
+               className="inline-flex w-fit items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-[#BC4424] transition-all hover:gap-2"
+            >
                {cta}
                <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
+            </Link>
          </div>
       </div>
    );

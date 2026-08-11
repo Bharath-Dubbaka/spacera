@@ -16,8 +16,8 @@ export default function Home() {
          <ImagesSliderDemo />
          <HeroSection />
          {/* <AboutSection /> */}
-         {/* <ServicesCarousel /> */}
-         <ServicesScrollDriven />
+         <ServicesCarousel />
+         {/* <ServicesScrollDriven /> */}
          {/*         <ServiceSection /> */}
          {/* <HeroSection /> */}
          <EndToEndSolutions />

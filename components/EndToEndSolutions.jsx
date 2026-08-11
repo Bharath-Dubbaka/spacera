@@ -114,7 +114,7 @@ export default function EndToEndSolutions() {
                         <div className="flex h-full w-full items-center justify-center">
                            <Icon
                               strokeWidth={1.25}
-                              className="h-28 w-28 text-[#BC4424] transition-all duration-300 group-hover:scale-115 group-hover:text-[#5b5b5b]"
+                              className="h-20 w-20 sm:h-28 sm:w-28 text-[#BC4424] transition-all duration-300 group-hover:scale-115 group-hover:text-[#5b5b5b]"
                            />
                         </div>
 
@@ -134,7 +134,7 @@ export default function EndToEndSolutions() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
-            className="fixed bottom-6 right-5 z-50 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform duration-300 hover:scale-110 sm:bottom-8 sm:right-8"
+            className="fixed bottom-6 right-5 z-50 flex h-[46px] w-[46px] sm:h-[56px] sm:w-[56px] items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform duration-300 hover:scale-110 sm:bottom-8 sm:right-8"
          >
             <svg
                viewBox="0 0 32 32"

@@ -22,7 +22,7 @@ const FAQS = [
    {
       question: "How long does it take to complete an interior design project?",
       answer:
-         "The timeline depends on the size and scope of the project, the level of customization and the materials selected. During the planning stage, Spacera provides a project timeline so you have a clear understanding of the major stages from design through installation.",
+         "Project timelines vary depending on the size, scope, level of customization, and material selections. Once the design is finalized and approved, the standard execution timeline is approximately 45 days. During the planning stage, Spacera provides a detailed schedule so you know what to expect at every phase of the project.",
    },
    {
       question: "Can Spacera help with furniture selection and procurement?",
@@ -42,7 +42,7 @@ const FAQS = [
    {
       question: "Do you provide a warranty for your work?",
       answer:
-         "Warranty and service coverage depends on the products, materials and work involved in your project. The applicable terms are discussed with you before execution so you have clarity about product warranties, workmanship and after-sales support.",
+         "Absolutely. All products and materials used in your project are backed by the manufacturer’s warranty, ensuring quality and reliability. Beyond project completion, Spacera remains committed to your home with lifetime after-sales support, providing ongoing assistance, guidance, and prompt resolution whenever required. Our relationship with our clients extends well beyond handover, giving you complete peace of mind and confidence in your investment.",
    },
    {
       question: "How do I get started with my home interiors?",
