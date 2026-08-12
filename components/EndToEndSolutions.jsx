@@ -16,12 +16,13 @@ import {
    DoorOpen,
    ArmchairIcon,
    Baby,
+   CookingPot,
 } from "lucide-react";
 
 const SOLUTIONS = [
    {
       title: "Modular Kitchen",
-      icon: ChefHat,
+      icon: CookingPot,
    },
    {
       title: "Storage and\nwardrobe",
@@ -119,7 +120,7 @@ export default function EndToEndSolutions() {
                         </div>
 
                         {/* Label */}
-                        <p className="mt-2 whitespace-pre-line text-[10px] leading-[1.25] text-[#3f3f3f] sm:text-[11px]">
+                        <p className="mt-2 whitespace-pre-line text-[12px] font-bold leading-[1.25] text-[#3f3f3f] sm:text-[14px]">
                            {item.title}
                         </p>
                      </div>

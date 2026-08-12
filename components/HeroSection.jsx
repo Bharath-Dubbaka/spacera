@@ -46,9 +46,13 @@ export default function MiniHero() {
                      {QUICK_LINKS.map((item) => (
                         <li
                            key={item}
-                           className="w-fit cursor-pointer font-[family-name:var(--font-neue-montreal)] text-xs uppercase tracking-[0.15em] text-white transition-colors hover:text-[#BC4424]"
+                           className="w-fit font-[family-name:var(--font-neue-montreal)] text-xs uppercase tracking-[0.15em] text-white transition-colors hover:text-[#BC4424]"
                         >
-                           {item}
+                           {item === "Get a Quote" ? (
+                              <Link href="/contact">{item}</Link>
+                           ) : (
+                              item
+                           )}
                         </li>
                      ))}
                   </ul>

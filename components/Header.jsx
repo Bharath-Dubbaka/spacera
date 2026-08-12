@@ -13,6 +13,7 @@ const LINKS = [
    { title: "FAQ's", href: "/faq", src: "gallery/optimized/bedrooms/03.webp" },
    // { title: "Lookbook", href: "/", src: "gallery/optimized/04.webp" },
    { title: "Contact", href: "/contact", src: "gallery/optimized/01.webp" },
+   { title: "About", href: "/about", src: "gallery/optimized/01.webp" },
 ];
 
 const heightAnim = {

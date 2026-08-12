@@ -1,4 +1,4 @@
-import AboutSection from "@/components/AboutSection";
+import Aboutus from "@/components/Aboutus";
 import HeroSection from "@/components/HeroSection";
 import ServiceSection from "@/components/ServiceSection";
 import Hero from "@/components/HeroSection";
@@ -9,6 +9,7 @@ import ServicesScrollDriven from "@/components/ServicesScrollDriven";
 import EndToEndSolutions from "@/components/EndToEndSolutions";
 import EssentialPackage from "@/components/EssentialPackage";
 import FAQ from "@/components/FAQ";
+import CustomInteriors from "@/components/CustomInteriors";
 
 export default function Home() {
    return (
@@ -21,7 +22,9 @@ export default function Home() {
          {/*         <ServiceSection /> */}
          {/* <HeroSection /> */}
          <EndToEndSolutions />
+         <CustomInteriors/>
          <EssentialPackage />
+         <Aboutus />
          <FAQ />
       </main>
    );

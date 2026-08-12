@@ -112,7 +112,7 @@ export default function ServicesCarousel() {
             </button>
             <div
                ref={trackRef}
-               className="hide-scrollbar flex mx-auto snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 sm:gap-8 sm:px-6 md:max-w-[73rem] md:px-12"
+               className="hide-scrollbar flex mx-auto snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 sm:gap-8 sm:px-6 md:max-w-[73rem] lg:max-w-[83rem] md:px-12"
             >
                {SERVICES.map((s) => (
                   <Link
