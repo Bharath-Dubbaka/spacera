@@ -17,7 +17,7 @@ export default function CustomInteriors({ onEstimateClick }) {
                      style={{ clipPath: "url(#interiorsHourglassClip)" }}
                   >
                      <Image
-                        src="/gallery/optimized/bedrooms/03.webp"
+                        src="/gallery/optimized/showcaseimg.webp"
                         alt="Custom interior — bedroom"
                         fill
                         sizes="440px"

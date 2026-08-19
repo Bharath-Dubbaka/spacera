@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowLeft, X } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 function PillGroup({ label, value, onChange, options }) {
    return (
@@ -36,7 +37,9 @@ function PillGroup({ label, value, onChange, options }) {
 }
 
 export default function EstimateModal({ isOpen, onClose }) {
+   const formRef = useRef(null);
    const [step, setStep] = useState(1);
+   const [isSubmitting, setIsSubmitting] = useState(false);
    const [form, setForm] = useState({
       phone: "",
       email: "",
@@ -100,10 +103,27 @@ export default function EstimateModal({ isOpen, onClose }) {
       if (step === 2) setStep(1);
    };
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("Estimate form:", form);
-      onClose();
+      if (!formRef.current || isSubmitting) return;
+
+      setIsSubmitting(true);
+
+      try {
+         await emailjs.sendForm(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+            formRef.current,
+            { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY },
+         );
+         alert("Thank you! We will get back to you soon.");
+         onClose();
+      } catch (error) {
+         console.error("EmailJS submission error:", error);
+         alert("Something went wrong. Please try again.");
+      } finally {
+         setIsSubmitting(false);
+      }
    };
 
    return (
@@ -168,28 +188,42 @@ export default function EstimateModal({ isOpen, onClose }) {
             </div>
 
             <form
+               ref={formRef}
                data-lenis-prevent
                onSubmit={handleSubmit}
                className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-7 pb-8 pt-7 sm:px-10 sm:pb-10"
             >
-               {step === 1 && (
-                  <div className="space-y-6">
-                     <Input
-                        label="Phone / WhatsApp"
-                        type="tel"
-                        placeholder="+91 98765 43210"
-                        value={form.phone}
-                        onChange={(value) => updateField("phone", value)}
-                        required
-                     />
-                     <Input
-                        label="Email"
-                        type="email"
-                        placeholder="you@example.com"
-                        value={form.email}
-                        onChange={(value) => updateField("email", value)}
-                        required
-                     />
+               {/* Hidden inputs so EmailJS sendForm picks up pill selections
+                   and step-1 fields even while step 2 is the visible DOM —
+                   step 1's fields stay mounted (just visually hidden isn't
+                   used here; see note below) */}
+               <input type="hidden" name="home_size" value={form.size} />
+               <input type="hidden" name="property_type" value={form.type} />
+               <input type="hidden" name="budget" value={form.budget} />
+
+               {/* Step 1 fields are kept in the DOM (hidden) once you move to
+                   step 2, so sendForm still picks up phone/email — otherwise
+                   unmounting step 1 would drop those values from the email. */}
+               <div className={step === 1 ? "space-y-6" : "hidden"}>
+                  <Input
+                     label="Phone / WhatsApp"
+                     name="mobile"
+                     type="tel"
+                     placeholder="+91 98765 43210"
+                     value={form.phone}
+                     onChange={(value) => updateField("phone", value)}
+                     required
+                  />
+                  <Input
+                     label="Email"
+                     name="email"
+                     type="email"
+                     placeholder="you@example.com"
+                     value={form.email}
+                     onChange={(value) => updateField("email", value)}
+                     required
+                  />
+                  {step === 1 && (
                      <button
                         type="button"
                         onClick={nextStep}
@@ -199,13 +233,14 @@ export default function EstimateModal({ isOpen, onClose }) {
                         <span>Continue</span>
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                      </button>
-                  </div>
-               )}
+                  )}
+               </div>
 
                {step === 2 && (
                   <div className="space-y-7">
                      <Input
                         label="Full Name"
+                        name="full_name"
                         placeholder="Your full name"
                         value={form.fullName}
                         onChange={(value) => updateField("fullName", value)}
@@ -213,6 +248,7 @@ export default function EstimateModal({ isOpen, onClose }) {
                      />
                      <Input
                         label="City"
+                        name="city"
                         placeholder="Your city"
                         value={form.city}
                         onChange={(value) => updateField("city", value)}
@@ -220,6 +256,7 @@ export default function EstimateModal({ isOpen, onClose }) {
                      />
                      <Input
                         label="Possession Date"
+                        name="possession_date"
                         type="date"
                         value={form.possessionDate}
                         onChange={(value) =>
@@ -260,9 +297,12 @@ export default function EstimateModal({ isOpen, onClose }) {
                         </button>
                         <button
                            type="submit"
-                           className="flex h-14 flex-1 items-center justify-center rounded-xl bg-black px-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#BC4424]"
+                           disabled={isSubmitting}
+                           className="flex h-14 flex-1 items-center justify-center rounded-xl bg-black px-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#BC4424] disabled:cursor-not-allowed disabled:opacity-60"
                         >
-                           Submit Quote Request
+                           {isSubmitting
+                              ? "Submitting..."
+                              : "Submit Quote Request"}
                         </button>
                      </div>
                   </div>
@@ -275,6 +315,7 @@ export default function EstimateModal({ isOpen, onClose }) {
 
 function Input({
    label,
+   name,
    type = "text",
    placeholder,
    value,
@@ -288,6 +329,7 @@ function Input({
          </span>
          <input
             type={type}
+            name={name}
             value={value}
             placeholder={placeholder}
             required={required}
