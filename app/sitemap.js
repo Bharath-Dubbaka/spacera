@@ -1,10 +1,8 @@
-import { SERVICES } from "@/lib/servicesData";
-
 const BASE_URL =
    process.env.NEXT_PUBLIC_SITE_URL || "https://spacerastudios.com";
 
 export default function sitemap() {
-   const staticRoutes = [
+   return [
       {
          url: BASE_URL,
          lastModified: new Date(),
@@ -12,19 +10,28 @@ export default function sitemap() {
          priority: 1,
       },
       {
+         url: `${BASE_URL}/about`,
+         lastModified: new Date(),
+         changeFrequency: "monthly",
+         priority: 0.8,
+      },
+      {
+         url: `${BASE_URL}/projects`,
+         lastModified: new Date(),
+         changeFrequency: "monthly",
+         priority: 0.9,
+      },
+      {
          url: `${BASE_URL}/contact`,
          lastModified: new Date(),
          changeFrequency: "monthly",
          priority: 0.8,
       },
+      {
+         url: `${BASE_URL}/faq`,
+         lastModified: new Date(),
+         changeFrequency: "yearly",
+         priority: 0.5,
+      },
    ];
-
-   const serviceRoutes = SERVICES.map((service) => ({
-      url: `${BASE_URL}/services/${service.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-   }));
-
-   return [...staticRoutes, ...serviceRoutes];
 }
