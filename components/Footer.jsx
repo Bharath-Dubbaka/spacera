@@ -12,7 +12,8 @@ const NAV = [
 ];
 
 const SOCIALS = [
-   { href: "https://instagram.com", label: "Instagram" },
+   { href: "https://www.instagram.com/spacera_studios/", label: "Instagram" },
+   { href: "https://www.youtube.com/@SpaceraStudios", label: "Youtube" },
    { href: "https://twitter.com", label: "Twitter" },
 ];
 
@@ -24,7 +25,7 @@ export default function Footer() {
          <div className="mx-auto flex max-w-6xl flex-col gap-12 sm:flex-row sm:justify-between">
             <div className="max-w-sm">
                <span className="font-mono text-xs uppercase tracking-[0.25em] text-paper">
-                  spacera Studios
+                  Spacera Studios
                </span>
                <p className="mt-4 text-sm leading-relaxed text-stone">
                   We create refined residential and commercial interiors that

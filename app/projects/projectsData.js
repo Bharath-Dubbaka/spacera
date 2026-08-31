@@ -142,19 +142,19 @@ export const PROJECT_SECTIONS = [
       cta: "Talk To Our Commercial Projects Expert",
       projects: [
          {
-            title: "Office Reception",
+            title: "Restaurant Interior",
             image: "/gallery/optimized/commercial/commercial-1.webp",
          },
          {
-            title: "Board Room",
+            title: "Salon Interiors",
             image: "/gallery/optimized/commercial/commercial-2.webp",
          },
          {
-            title: "Open Workspace",
+            title: "Meeting Room",
             image: "/gallery/optimized/02.webp",
          },
          {
-            title: "Studio Interior",
+            title: "Office Reception",
             image: "/gallery/optimized/04.webp",
          },
       ],
